@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block pageTitle %}{% endblock %}</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  </head>
+  <body>
+
+    <!-- Encapsule tout le contenu de la page -->
+    <div id="pageWrapper">
+
+      <!-- Commencer le contenu de la page -->
+      <main id="mainContent" role="main" class="container">
+
+        {% with flashMessages = get_flashed_messages() %}
+          {% if flashMessages %}
+            {% for msg in flashMessages %}
+              <div class="alert alert-block alert-error fade in">
+                <a class="close" data-dismiss="alert">&times;</a>
+                {{ msg }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        {% block pageContent %}{% endblock %}
+
+      </main>
+
+    </div>
+
+    <div id="pageFooter">
+      <div class="container">
+          <p>Nina ALIN FISA 2024</p>
+        {% block customFooter %}{% endblock %}
+      </div>
+    </div>
+
+  </body>
+</html>
